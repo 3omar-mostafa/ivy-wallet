@@ -10,6 +10,8 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import javax.inject.Inject
 
+private const val TROY_OUNCE = 31.1034768
+
 class RemoteExchangeRatesDataSourceImpl @Inject constructor(
     private val ktorClient: dagger.Lazy<HttpClient>,
 ) : RemoteExchangeRatesDataSource {
@@ -36,7 +38,6 @@ class RemoteExchangeRatesDataSourceImpl @Inject constructor(
     ): Either<String, ExchangeRatesResponse> = catch({
         var value = ktorClient.get().get(url).body<ExchangeRatesResponse>()
         // Add metal grams to the response
-        val TROY_OUNCE = 31.1034768 // grams in a troy ounce
         val preciousMetalGrams = setOf(
             Pair("xaug", TROY_OUNCE * (value.rates["xau"] ?: 0.0)), // Gold (grams)
             Pair("xagg", TROY_OUNCE * (value.rates["xag"] ?: 0.0)), // Silver (grams)

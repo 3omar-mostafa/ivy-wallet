@@ -5,7 +5,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
@@ -77,7 +76,9 @@ class BalanceViewModel @Inject constructor(
             ).toDouble()
 
             plannedPaymentsAmount = ioThread {
-                val range = timePeriod.fromToRange ?: timePeriod.toRange(ivyContext.startDayOfMonth, timeConverter, timeProvider)
+                val range = timePeriod.fromToRange ?: timePeriod.toRange(
+                    ivyContext.startDayOfMonth, timeConverter, timeProvider
+                )
                 plannedPaymentsLogic.plannedPaymentsAmountFor(range)
             }
             balanceAfterPlannedPayments =
