@@ -182,6 +182,29 @@ data class IvyCurrency(
             ),
         )
 
+        private val PRECIOUS_METAL_GRAMS = setOf(
+            IvyCurrency(
+                code = "XAUg",
+                name = "Gold (grams)",
+                isCrypto = false
+            ),
+            IvyCurrency(
+                code = "XAGg",
+                name = "Silver (grams)",
+                isCrypto = false
+            ),
+            IvyCurrency(
+                code = "XPTg",
+                name = "Platinum (grams)",
+                isCrypto = false
+            ),
+            IvyCurrency(
+                code = "XPDg",
+                name = "Palladium (grams)",
+                isCrypto = false
+            ),
+        )
+
         fun getAvailable(): List<IvyCurrency> {
             return Currency.getAvailableCurrencies()
                 .map {
@@ -192,6 +215,7 @@ data class IvyCurrency(
                     )
                 }
                 .plus(CRYPTO)
+                .plus(PRECIOUS_METAL_GRAMS)
         }
 
         fun fromCode(code: String): IvyCurrency? {
@@ -200,6 +224,11 @@ data class IvyCurrency(
             val crypto = CRYPTO.find { it.code == code }
             if (crypto != null) {
                 return crypto
+            }
+
+            val metal = PRECIOUS_METAL_GRAMS.find { it.code == code }
+            if (metal != null) {
+                return metal
             }
 
             return try {

@@ -34,7 +34,17 @@ class RemoteExchangeRatesDataSourceImpl @Inject constructor(
     private suspend fun fetchEurExchangeRates(
         url: String
     ): Either<String, ExchangeRatesResponse> = catch({
-        Either.Right(ktorClient.get().get(url).body<ExchangeRatesResponse>())
+        var value = ktorClient.get().get(url).body<ExchangeRatesResponse>()
+        // Add metal grams to the response
+        val TROY_OUNCE = 31.1034768 // grams in a troy ounce
+        val preciousMetalGrams = setOf(
+            Pair("xaug", TROY_OUNCE * (value.rates["xau"] ?: 0.0)), // Gold (grams)
+            Pair("xagg", TROY_OUNCE * (value.rates["xag"] ?: 0.0)), // Silver (grams)
+            Pair("xptg", TROY_OUNCE * (value.rates["xpt"] ?: 0.0)), // Platinum (grams)
+            Pair("xpdg", TROY_OUNCE * (value.rates["xpd"] ?: 0.0)), // Palladium (grams)
+        ).toMap().filterValues { it > 0.0 }
+
+        Either.Right(value.copy(rates = value.rates + preciousMetalGrams))
     }) { e ->
         Either.Left(e.message ?: "Error fetching exchange rates")
     }
