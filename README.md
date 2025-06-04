@@ -109,7 +109,6 @@ Make sure to check out our short **[Developer Guidelines 🏗️](docs/Guideline
 - [Fastlane](https://fastlane.tools/) (uploads the app to the Google Play Store)
 
 ### Other
-- [Firebase Crashlytics](https://firebase.google.com/products/crashlytics) (stability monitoring)
 - [Timber](https://github.com/JakeWharton/timber) (logging)
 - [Detekt](https://github.com/detekt/detekt) (linter)
 - [Ktlint](https://github.com/pinterest/ktlint) (linter)

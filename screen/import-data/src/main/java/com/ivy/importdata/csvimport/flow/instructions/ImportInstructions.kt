@@ -95,12 +95,6 @@ fun BoxWithConstraintsScope.ImportInstructions(
 
             Spacer(Modifier.height(24.dp))
 
-            App(
-                importType = importType
-            )
-
-            Spacer(Modifier.height(24.dp))
-
             IvyDividerLine(
                 modifier = Modifier.padding(horizontal = 32.dp)
             )
@@ -325,40 +319,6 @@ fun StepTitle(
     }
 }
 
-@Composable
-private fun App(
-    importType: ImportType
-) {
-    val rootScreen = com.ivy.legacy.rootScreen()
-
-    Row(
-        modifier = Modifier
-            .padding(horizontal = 32.dp)
-            .clickable {
-                rootScreen.openGooglePlayAppPage(
-                    appId = importType.appId()
-                )
-            },
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        IvyIcon(
-            modifier = Modifier
-                .drawColoredShadow(importType.color())
-                .size(48.dp),
-            icon = importType.logo(),
-            tint = Color.Unspecified
-        )
-
-        Spacer(Modifier.width(16.dp))
-
-        Text(
-            text = importType.appName(),
-            style = UI.typo.b2.style(
-                fontWeight = Bold
-            )
-        )
-    }
-}
 
 @ExperimentalFoundationApi
 @Preview

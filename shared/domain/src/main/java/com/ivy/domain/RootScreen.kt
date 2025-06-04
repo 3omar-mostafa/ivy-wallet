@@ -18,8 +18,6 @@ interface RootScreen {
      */
     val buildVersionCode: Int
 
-    fun reviewIvyWallet(dismissReviewCard: Boolean)
-
     fun shareIvyWallet()
 
     fun openUrlInBrowser(url: String)
@@ -27,8 +25,6 @@ interface RootScreen {
     fun shareCSVFile(fileUri: Uri)
 
     fun shareZipFile(fileUri: Uri)
-
-    fun openGooglePlayAppPage(appId: String)
 
     fun <T> pinWidget(widget: Class<T>)
 }

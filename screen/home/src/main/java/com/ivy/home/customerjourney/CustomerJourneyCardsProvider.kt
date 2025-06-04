@@ -146,22 +146,6 @@ class CustomerJourneyCardsProvider @Inject constructor(
             }
         )
 
-        fun rateUsCard() = CustomerJourneyCardModel(
-            id = "rate_us",
-            condition = { trnCount, _, _ ->
-                trnCount >= 10
-            },
-            title = stringRes(R.string.review_ivy_wallet),
-            description = stringRes(R.string.review_ivy_wallet_description),
-            cta = stringRes(R.string.rate_us_on_google_play),
-            ctaIcon = R.drawable.ic_custom_star_s,
-            background = Gradient.solid(Green),
-            hasDismiss = true,
-            onAction = { _, _, ivyActivity ->
-                ivyActivity.reviewIvyWallet(dismissReviewCard = true)
-            }
-        )
-
         fun shareIvyWalletCard() = CustomerJourneyCardModel(
             id = "share_ivy_wallet",
             condition = { trnCount, _, _ ->
@@ -210,21 +194,6 @@ class CustomerJourneyCardsProvider @Inject constructor(
             }
         )
 
-        fun rateUsCard_2() = CustomerJourneyCardModel(
-            id = "rate_us_2",
-            condition = { trnCount, _, _ ->
-                trnCount >= 22
-            },
-            title = stringRes(R.string.review_ivy_wallet),
-            description = stringRes(R.string.make_ivy_wallet_better_description),
-            cta = stringRes(R.string.rate_us_on_google_play),
-            ctaIcon = R.drawable.ic_custom_star_s,
-            background = Gradient.solid(GreenLight),
-            hasDismiss = true,
-            onAction = { _, _, ivyActivity ->
-                ivyActivity.reviewIvyWallet(dismissReviewCard = true)
-            }
-        )
 
         fun joinTelegram2() = CustomerJourneyCardModel(
             id = "ivy_telegram_2",
