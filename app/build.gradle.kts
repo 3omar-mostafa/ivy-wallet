@@ -61,7 +61,7 @@ android {
                 "proguard-rules.pro"
             )
 
-            resValue("string", "app_name", "Ivy Wallet")
+            resValue("string", "app_name", "Ivy Wallet Old")
         }
 
         create("demo") {
@@ -78,7 +78,7 @@ android {
 
             applicationIdSuffix = ".debug"
             matchingFallbacks.add("release")
-            resValue("string", "app_name", "Ivy Wallet Demo")
+            resValue("string", "app_name", "Ivy Wallet Old Demo")
         }
 
         debug {
@@ -89,7 +89,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
 
             applicationIdSuffix = ".debug"
-            resValue("string", "app_name", "Ivy Wallet Debug")
+            resValue("string", "app_name", "Ivy Wallet Old Debug")
         }
     }
 

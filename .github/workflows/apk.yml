@@ -34,6 +34,16 @@ jobs:
       - name: Upload Ivy Wallet APK
         uses: actions/upload-artifact@v4
         with:
-          name: Ivy-Wallet-Demo.apk
+          name: Ivy-Wallet-Old-Demo.apk
           path: app/build/outputs/apk/demo/app-demo.apk
+      #------------------------------------------------------------------
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug
+
+      - name: Upload Ivy Wallet APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ivy-Wallet-Old-Debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
       #------------------------------------------------------------------

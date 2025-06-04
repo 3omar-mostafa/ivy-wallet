@@ -29,7 +29,7 @@ object Project {
     const val compileSdkVersion = 33
 
     //App
-    const val applicationId = "com.ivy.wallet"
+    const val applicationId = "com.ivy.wallet.old"
     const val minSdk = 28
     const val targetSdk = 30
 }
