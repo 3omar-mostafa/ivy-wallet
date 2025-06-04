@@ -26,8 +26,18 @@ jobs:
       - name: Build Demo APK
         run: ./gradlew assembleDemo
 
-      - name: Upload APK to Github Actions
+      - name: Upload Demo APK to Github Actions
         uses: actions/upload-artifact@v4
         with:
           name: Ivy-Wallet-Demo.apk
           path: app/build/outputs/apk/demo/app-demo.apk
+
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
+
+      - name: Upload Debug APK to Github Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ivy-Wallet-Debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
