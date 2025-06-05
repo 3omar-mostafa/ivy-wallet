@@ -106,7 +106,6 @@ Make sure to check out our short **[Developer Guidelines 🏗️](docs/Guideline
 - [Gradle convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) (build logic)
 - [Gradle version catalogs](https://developer.android.com/build/migrate-to-catalogs) (dependencies versions)
 - [GitHub Actions](https://github.com/Ivy-Apps/ivy-wallet/actions) (CI/CD)
-- [Fastlane](https://fastlane.tools/) (uploads the app to the Google Play Store)
 
 ### Other
 - [Timber](https://github.com/JakeWharton/timber) (logging)
