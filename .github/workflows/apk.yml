@@ -9,7 +9,11 @@ on:
 
 jobs:
   assemble_demo_apk:
+    name: Assemble ${{ matrix.variant }} APK
     runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            variant: [Demo, Debug]
     steps:
       - name: Checkout GIT
         uses: actions/checkout@v4
@@ -23,21 +27,11 @@ jobs:
       - name: Gradle cache
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build Demo APK
-        run: ./gradlew assembleDemo
+      - name: Build ${{ matrix.variant }} APK
+        run: ./gradlew assemble${{ matrix.variant }}
 
-      - name: Upload Demo APK to Github Actions
+      - name: Upload ${{ matrix.variant }} APK to Github Actions
         uses: actions/upload-artifact@v4
         with:
-          name: Ivy-Wallet-Demo.apk
-          path: app/build/outputs/apk/demo/app-demo.apk
-
-
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
-
-      - name: Upload Debug APK to Github Actions
-        uses: actions/upload-artifact@v4
-        with:
-          name: Ivy-Wallet-Debug.apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: Ivy-Wallet-${{ matrix.variant }}.apk
+          path: app/build/outputs/apk/demo/app-${{ matrix.variant | lower }}.apk
