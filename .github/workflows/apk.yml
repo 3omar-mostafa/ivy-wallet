@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Ivy-Wallet-${{ matrix.variant }}.apk
-          path: app/build/outputs/apk/demo/app-${{ matrix.variant | lower }}.apk
+          path: app/build/outputs/apk/demo/app-${{ matrix.variant.toLowerCase() }}.apk
