@@ -6,6 +6,9 @@ on:
       - main
   pull_request:
 
+env:
+  LINT_PRINT_STACKTRACE: 'true'
+
 jobs:
   lint:
     runs-on: ubuntu-latest
