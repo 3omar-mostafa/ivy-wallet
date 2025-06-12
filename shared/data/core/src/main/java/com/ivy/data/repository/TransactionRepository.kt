@@ -104,6 +104,9 @@ class TransactionRepository @Inject constructor(
                 startDate = startDate,
                 endDate = endDate
             )
+        },
+        retrieveTags = {
+            getTagsForTransactionIds(listOf(it))[it.id] ?: emptyList()
         }
     )
 
@@ -118,6 +121,9 @@ class TransactionRepository @Inject constructor(
                 startDate = startDate,
                 endDate = endDate
             )
+        },
+        retrieveTags = {
+            getTagsForTransactionIds(listOf(it))[it.id] ?: emptyList()
         }
     )
 
