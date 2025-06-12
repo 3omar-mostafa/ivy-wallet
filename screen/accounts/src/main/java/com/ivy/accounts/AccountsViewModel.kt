@@ -14,6 +14,7 @@ import com.ivy.base.time.TimeConverter
 import com.ivy.base.time.TimeProvider
 import com.ivy.data.DataObserver
 import com.ivy.data.DataWriteEvent
+import com.ivy.data.model.Account
 import com.ivy.data.repository.AccountRepository
 import com.ivy.domain.features.Features
 import com.ivy.legacy.IvyWalletCtx
@@ -59,6 +60,7 @@ class AccountsViewModel @Inject constructor(
     private var totalBalanceWithoutExcluded by mutableStateOf("")
     private var totalBalanceWithoutExcludedText by mutableStateOf("")
     private var reorderVisible by mutableStateOf(false)
+    private var hideVisible by mutableStateOf(false)
 
     init {
         viewModelScope.launch {
@@ -90,6 +92,7 @@ class AccountsViewModel @Inject constructor(
             totalBalanceWithoutExcluded = getTotalBalanceWithoutExcluded(),
             totalBalanceWithoutExcludedText = getTotalBalanceWithoutExcludedText(),
             reorderVisible = getReorderVisible(),
+            hideVisible = getHideVisible(),
             compactAccountsModeEnabled = getCompactAccountsMode(),
             hideTotalBalance = getHideTotalBalance()
         )
@@ -136,6 +139,11 @@ class AccountsViewModel @Inject constructor(
     }
 
     @Composable
+    private fun getHideVisible(): Boolean {
+        return hideVisible
+    }
+
+    @Composable
     private fun getCompactAccountsMode(): Boolean {
         return features.compactAccountsMode.asEnabledState()
     }
@@ -145,6 +153,11 @@ class AccountsViewModel @Inject constructor(
             when (event) {
                 is AccountsEvent.OnReorder -> reorder(event.reorderedList)
                 is AccountsEvent.OnReorderModalVisible -> reorderModalVisible(event.reorderVisible)
+                is AccountsEvent.OnHideModalVisible -> hideModalVisible(event.hideVisible)
+                is AccountsEvent.OnVisibilityUpdate -> {
+                    updateVisibility(event.updatedList)
+                    hideVisible = false
+                }
             }
         }
     }
@@ -153,6 +166,16 @@ class AccountsViewModel @Inject constructor(
         ioThread {
             newOrder.mapIndexed { index, accountData ->
                 accountRepository.save(accountData.account.copy(orderNum = index.toDouble()))
+            }
+        }
+
+        startInternally()
+    }
+
+    private suspend fun updateVisibility(accounts: List<Account>) {
+        ioThread {
+            accounts.forEach { acc ->
+                accountRepository.save(acc)
             }
         }
 
@@ -221,5 +244,9 @@ class AccountsViewModel @Inject constructor(
 
     private fun reorderModalVisible(visible: Boolean) {
         reorderVisible = visible
+    }
+
+    private fun hideModalVisible(visible: Boolean) {
+        hideVisible = visible
     }
 }
