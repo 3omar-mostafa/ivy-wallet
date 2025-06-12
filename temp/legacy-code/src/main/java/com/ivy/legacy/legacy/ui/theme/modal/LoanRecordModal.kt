@@ -104,7 +104,7 @@ fun BoxWithConstraintsScope.LoanRecordModal(
         mutableStateOf(modal?.selectedAccount)
     }
     var createLoanRecordTrans by remember(modal) {
-        mutableStateOf(modal?.createLoanRecordTransaction ?: false)
+        mutableStateOf(modal?.createLoanRecordTransaction ?: true)
     }
     var loanInterest by remember(modal) {
         mutableStateOf(modal?.isLoanInterest ?: false)
