@@ -17,12 +17,11 @@ import com.ivy.data.model.CategoryId
 import com.ivy.data.model.LoanType
 import com.ivy.data.model.TransactionId
 import com.ivy.data.model.primitive.ColorInt
-import com.ivy.data.model.primitive.IconAsset
 import com.ivy.data.model.primitive.NotBlankTrimmedString
 import com.ivy.data.repository.CategoryRepository
 import com.ivy.data.repository.TransactionRepository
 import com.ivy.data.repository.mapper.TransactionMapper
-import com.ivy.design.IVY_COLOR_PICKER_COLORS_FREE
+import com.ivy.design.l0_system.Purple1
 import com.ivy.legacy.IvyWalletCtx
 import com.ivy.legacy.datamodel.Account
 import com.ivy.legacy.datamodel.Loan
@@ -56,10 +55,6 @@ class LoanTransactionsCore @Inject constructor(
     private val timeProvider: TimeProvider,
 ) {
     private var baseCurrencyCode: String? = null
-
-    companion object {
-        const val DEFAULT_COLOR_INDEX = 4
-    }
 
     init {
         CoroutineScope(Dispatchers.IO).launch {
@@ -226,14 +221,14 @@ class LoanTransactionsCore @Inject constructor(
         var addCategoryToDb = false
 
         val loanCategory = categoryList.find { category ->
-            category.name.value.lowercase(Locale.ENGLISH).contains("loan")
+            category.name.value.lowercase(Locale.ENGLISH).contains("zakah")
         } ?: if (ivyContext.isPremium || categoryList.size < 12) {
             addCategoryToDb = true
 
             Category(
-                name = NotBlankTrimmedString.unsafe("Loans"),
-                color = ColorInt(IVY_COLOR_PICKER_COLORS_FREE[DEFAULT_COLOR_INDEX].toArgb()),
-                icon = IconAsset.unsafe("loan"),
+                name = NotBlankTrimmedString.unsafe("Zakah"),
+                color = ColorInt(Purple1.toArgb()),
+                icon = null,
                 id = CategoryId(UUID.randomUUID()),
                 orderNum = 0.0,
             )
