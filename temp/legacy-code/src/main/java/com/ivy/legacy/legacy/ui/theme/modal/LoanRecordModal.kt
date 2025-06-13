@@ -68,7 +68,7 @@ data class LoanRecordModalData(
     val baseCurrency: String,
     val loanAccountCurrencyCode: String? = null,
     val selectedAccount: Account? = null,
-    val createLoanRecordTransaction: Boolean = false,
+    val createLoanRecordTransaction: Boolean = true,
     val isLoanInterest: Boolean = false,
     val id: UUID = UUID.randomUUID(),
 )
