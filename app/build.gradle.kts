@@ -91,6 +91,10 @@ android {
         }
     }
 
+    sourceSets {
+        getByName("demo").setRoot("src/release")
+    }
+
     val javaVersion = libs.versions.jvm.target.get()
     kotlinOptions {
         jvmTarget = javaVersion
