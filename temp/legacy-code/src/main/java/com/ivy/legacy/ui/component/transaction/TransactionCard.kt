@@ -252,7 +252,7 @@ fun TransactionCard(
                     wrapContentMode = false,
                     backgroundGradient = if (isExpense) gradientExpenses() else GradientGreen,
                     textStyle = UI.typo.b2.style(
-                        color = if (isExpense) UI.colors.pure else White,
+                        color = White,
                         fontWeight = FontWeight.Bold
                     )
                 ) {
@@ -606,9 +606,9 @@ fun TypeAmountCurrency(
                         // Normal Expense
                         AmountTypeStyle(
                             icon = R.drawable.ic_expense,
-                            gradient = Gradient.black(),
+                            gradient = GradientRed,
                             iconTint = White,
-                            textColor = UI.colors.pureInverse
+                            textColor = Red
                         )
                     }
                 }

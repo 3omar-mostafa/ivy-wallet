@@ -33,6 +33,7 @@ import com.ivy.ui.R
 import com.ivy.wallet.ui.theme.Gradient
 import com.ivy.wallet.ui.theme.GradientGreen
 import com.ivy.wallet.ui.theme.GradientIvy
+import com.ivy.wallet.ui.theme.gradientExpenses
 import com.ivy.wallet.ui.theme.White
 import com.ivy.wallet.ui.theme.modal.IvyModal
 import com.ivy.wallet.ui.theme.modal.ModalSet
@@ -94,8 +95,8 @@ fun BoxWithConstraintsScope.ChangeTransactionTypeModal(
         TransactionTypeButton(
             transactionType = TransactionType.EXPENSE,
             selected = transactionType == TransactionType.EXPENSE,
-            selectedGradient = Gradient(UI.colors.pureInverse, UI.colors.gray),
-            textSelectedColor = UI.colors.pure
+            selectedGradient = gradientExpenses(),
+            textSelectedColor = White
         ) {
             transactionType = TransactionType.EXPENSE
             save(

@@ -330,11 +330,7 @@ private fun Header(
                     iconPadding = 4.dp,
                     icon = R.drawable.ic_plus,
                     backgroundGradient = backgroundGradient,
-                    tint = if (transactionType == TransactionType.EXPENSE) {
-                        UI.colors.pure
-                    } else {
-                        White
-                    }
+                    tint = White
                 ) {
                     onAdd(transactionType)
                 }

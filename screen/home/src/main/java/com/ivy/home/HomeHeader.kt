@@ -53,7 +53,8 @@ import com.ivy.navigation.navigation
 import com.ivy.ui.R
 import com.ivy.wallet.ui.theme.Gradient
 import com.ivy.wallet.ui.theme.GradientGreen
-import com.ivy.wallet.ui.theme.Gray
+import com.ivy.wallet.ui.theme.gradientExpenses
+import com.ivy.wallet.ui.theme.Red
 import com.ivy.wallet.ui.theme.Green
 import com.ivy.wallet.ui.theme.White
 import com.ivy.wallet.ui.theme.components.BalanceRow
@@ -279,7 +280,7 @@ fun CashFlowInfo(
                     currency,
                 ),
                 style = UI.typo.nB2.style(
-                    color = if (cashflow < 0) Gray else Green,
+                    color = if (cashflow < 0) Red else Green,
                 ),
             )
 
@@ -333,8 +334,8 @@ private fun IncomeExpenses(
         HeaderCard(
             percentVisible = percentExpanded,
             icon = R.drawable.ic_expense,
-            backgroundGradient = Gradient(UI.colors.pureInverse, UI.colors.gray),
-            textColor = UI.colors.pure,
+            backgroundGradient = gradientExpenses(),
+            textColor = White,
             label = stringResource(R.string.expenses),
             currency = currency,
             amount = monthlyExpenses.absoluteValue,

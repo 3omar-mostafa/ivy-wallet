@@ -84,7 +84,7 @@ val MediumWhite = Color(0xFFEFEEF0)
 val Transparent = Color(0x00000000)
 
 @Deprecated("Old design system. Use `:ivy-design` and Material3")
-val GradientRed = Gradient(Red, Color(0xFFFF99AB))
+val GradientRed = Gradient(Red, Color(0xFFF44336))
 
 val GradientPurple = Gradient(Purple, Color(0xFFED3EF7))
 
@@ -141,7 +141,7 @@ fun mediumBlur() = UI.colors.medium.copy(alpha = 0.95f)
 
 @Deprecated("Old design system. Use `:ivy-design` and Material3")
 @Composable
-fun gradientExpenses() = Gradient(UI.colors.pureInverse, UI.colors.gray)
+fun gradientExpenses() = GradientRed
 
 @Deprecated("Old design system. Use `:ivy-design` and Material3")
 data class Gradient(

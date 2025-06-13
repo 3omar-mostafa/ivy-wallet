@@ -112,7 +112,7 @@ private fun SectionDividerIncomeExpenseRow(
                 text = "${expenses.format(baseCurrency)} $baseCurrency",
                 style = UI.typo.nC.style(
                     fontWeight = FontWeight.ExtraBold,
-                    color = UI.colors.pureInverse
+                    color = UI.colors.red
                 )
             )
             Spacer(modifier = Modifier.width(4.dp))

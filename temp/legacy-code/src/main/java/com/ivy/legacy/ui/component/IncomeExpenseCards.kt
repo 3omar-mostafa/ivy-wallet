@@ -30,6 +30,7 @@ import com.ivy.legacy.utils.format
 import com.ivy.ui.R
 import com.ivy.wallet.domain.data.IvyCurrency
 import com.ivy.wallet.ui.theme.Gradient
+import com.ivy.wallet.ui.theme.Red
 import com.ivy.wallet.ui.theme.Green
 import com.ivy.wallet.ui.theme.MediumBlack
 import com.ivy.wallet.ui.theme.MediumWhite
@@ -183,7 +184,7 @@ private fun RowScope.HeaderCard(
         Spacer(Modifier.height(24.dp))
 
         if (addButtonText != null) {
-            val addButtonBackground = if (isIncome) Green else contrastColor
+            val addButtonBackground = if (isIncome) Green else Red
             IvyButton(
                 modifier = Modifier
                     .fillMaxWidth()

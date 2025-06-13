@@ -209,7 +209,7 @@ private fun ColumnScope.BalanceAfterPlannedPayments(
             Text(
                 text = "${plusSign}${plannedPaymentsAmount.format(2)} $currency",
                 style = UI.typo.nC.style(
-                    color = UI.colors.pureInverse,
+                    color = if (plusSign.isNotEmpty()) UI.colors.green else UI.colors.red,
                     fontWeight = FontWeight.ExtraBold
                 )
             )

@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.glance.ColorFilter
 import androidx.glance.GlanceModifier
 import androidx.glance.Image
 import androidx.glance.ImageProvider
@@ -158,14 +159,15 @@ fun IncomeExpenseSection(
         ) {
             Image(
                 ImageProvider(R.drawable.ic_expense),
-                resources.getString(R.string.expense)
+                resources.getString(R.string.expense),
+                colorFilter = ColorFilter.tint(ColorProvider(Color.White))
             )
             Text(
                 text = "$expense $currency",
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = ColorProvider(Color.Black)
+                    color = ColorProvider(Color.White)
                 )
             )
         }
