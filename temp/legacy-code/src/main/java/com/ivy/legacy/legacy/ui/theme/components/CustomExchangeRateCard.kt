@@ -103,7 +103,7 @@ fun CustomExchangeRateCard(
                 )
                 IvyIcon(icon = R.drawable.ic_arrow_right, tint = Orange)
                 Text(
-                    text = exchangeRate.format(IvyCurrency.getDecimalPlaces(toCurrencyCode)),
+                    text = exchangeRate.format(18),
                     style = UI.typo.nB2.style(
                         fontWeight = FontWeight.ExtraBold,
                         color = Orange

@@ -48,7 +48,7 @@ fun BoxWithConstraintsScope.CalculatorModal(
       onCalculation: (Double) -> Unit
 ) {
     var expression by remember(id, initialAmount) {
-        mutableStateOf(initialAmount?.format(currency) ?: "")
+        mutableStateOf(initialAmount?.format(18) ?: "")
     }
 
     IvyModal(
@@ -151,7 +151,7 @@ fun BoxWithConstraintsScope.CalculatorModal(
                 ) {
                     val result = calculate(expression)
                     if (result != null) {
-                        expression = result.format(currency)
+                        expression = result.format(18)
                     }
                 }
             },

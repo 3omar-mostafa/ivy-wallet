@@ -167,7 +167,6 @@ fun BoxWithConstraintsScope.AmountModal(
 
         AmountInput(
             currency = currency,
-            decimalCountMax = decimalCountMax,
             amount = amount
         ) {
             amount = it
@@ -184,7 +183,7 @@ fun BoxWithConstraintsScope.AmountModal(
             calculatorModalVisible = false
         },
         onCalculation = {
-            amount = if (currency.isNotEmpty()) it.format(currency) else it.format(decimalCountMax)
+            amount = it.format(18)
         }
     )
 }
@@ -225,7 +224,7 @@ fun AmountCurrency(
 fun AmountInput(
     currency: String,
     amount: String,
-    decimalCountMax: Int = 2,
+    decimalCountMax: Int = 18,
     setAmount: (String) -> Unit,
 ) {
     var firstInput by remember { mutableStateOf(true) }

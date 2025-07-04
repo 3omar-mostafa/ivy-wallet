@@ -72,6 +72,7 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.Instant
 import java.time.LocalDateTime
 import java.util.UUID
@@ -400,7 +401,7 @@ class EditTransactionViewModel @Inject constructor(
         customExchangeRateState = if (transaction.toAccountId == null) {
             CustomExchangeRateState()
         } else {
-            val exchangeRate = transaction.toAmount / transaction.amount
+            val exchangeRate = transaction.toAmount.divide(transaction.amount, 18, RoundingMode.HALF_UP)
             val toAccountCurrency =
                 accounts.find { acc -> acc.id == transaction.toAccountId }?.currency
             CustomExchangeRateState(
@@ -707,15 +708,16 @@ class EditTransactionViewModel @Inject constructor(
         try {
             ioThread {
                 val amount = amount.toBigDecimal()
+                val toAmount = customExchangeRateState.convertedAmount?.toBigDecimal() ?: amount
+
 
                 loadedTransaction = loadedTransaction().copy(
                     accountId = account?.id ?: error("no accountId"),
                     toAccountId = toAccount?.id,
-                    toAmount = customExchangeRateState.convertedAmount?.toBigDecimal()
-                        ?: amount,
+                    toAmount = toAmount.setScale(2, RoundingMode.HALF_EVEN),
                     title = title?.trim(),
                     description = description?.trim(),
-                    amount = amount,
+                    amount = amount.setScale(2, RoundingMode.HALF_EVEN),
                     type = transactionType,
                     dueDate = dueDate,
                     paidFor = paidHistory,

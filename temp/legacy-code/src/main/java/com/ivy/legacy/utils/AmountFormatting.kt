@@ -46,7 +46,10 @@ fun localGroupingSeparator(): String {
 }
 
 // Display Formatting
-fun Double.format(digits: Int) = "%.${digits}f".format(this)
+fun Double.format(digits: Int): String {
+    val pattern = "0." + "0".repeat(2) + "#".repeat((digits - 2).coerceAtLeast(0))
+    return DecimalFormat(pattern).format(this)
+}
 
 fun Double.format(currencyCode: String): String {
     return this.format(IvyCurrency.fromCode(currencyCode))
@@ -168,7 +171,7 @@ fun formatInputAmount(
     currency: String,
     amount: String,
     newSymbol: String,
-    decimalCountMax: Int = 2,
+    decimalCountMax: Int = 18,
 ): String? {
     val newlyEnteredNumberString = amount + newSymbol
 

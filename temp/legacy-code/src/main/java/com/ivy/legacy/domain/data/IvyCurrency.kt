@@ -183,23 +183,27 @@ data class IvyCurrency(
         )
 
         private val PRECIOUS_METAL_GRAMS = setOf(
+            IvyCurrency(Currency.getInstance("XAU")),
             IvyCurrency(
-                code = "XAUg",
+                code = "XAUG",
                 name = "Gold (grams)",
                 isCrypto = false
             ),
+            IvyCurrency(Currency.getInstance("XAG")),
             IvyCurrency(
-                code = "XAGg",
+                code = "XAGG",
                 name = "Silver (grams)",
                 isCrypto = false
             ),
+            IvyCurrency(Currency.getInstance("XPT")),
             IvyCurrency(
-                code = "XPTg",
+                code = "XPTG",
                 name = "Platinum (grams)",
                 isCrypto = false
             ),
+            IvyCurrency(Currency.getInstance("XPD")),
             IvyCurrency(
-                code = "XPDg",
+                code = "XPDG",
                 name = "Palladium (grams)",
                 isCrypto = false
             ),
