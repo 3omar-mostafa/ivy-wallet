@@ -14,10 +14,10 @@ jobs:
         api-level: [34]  # You can add more API levels if needed
     steps:
       - name: Checkout GIT
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Java SDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'adopt'
           java-version: '18'
