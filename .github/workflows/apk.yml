@@ -16,16 +16,16 @@ jobs:
             variant: [Demo, Debug]
     steps:
       - name: Checkout GIT
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'adopt'
           java-version: '18'
 
       - name: Gradle cache
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v5
 
       - name: Build ${{ matrix.variant }} APK
         run: ./gradlew assemble${{ matrix.variant }}
@@ -36,7 +36,7 @@ jobs:
           echo "LOWERCASE_VARIANT=${VARIANT@L}" >> $GITHUB_ENV
 
       - name: Upload ${{ matrix.variant }} APK to Github Actions
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: Ivy-Wallet-${{ matrix.variant }}.apk
           path: app/build/outputs/apk/${{ env.LOWERCASE_VARIANT }}/app-${{ env.LOWERCASE_VARIANT }}.apk
